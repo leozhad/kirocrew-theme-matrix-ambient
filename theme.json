@@ -1,0 +1,57 @@
+{
+  "slug": "leozh-matrix-ambient",
+  "name": "Matrix (ambient rain)",
+  "emoji": "💊",
+  "level": 2,
+  "formatVersion": 1,
+  "fonts": [
+    {
+      "family": "Courier Prime",
+      "file": "courierprime-regular.ttf",
+      "weight": 400,
+      "role": "sans"
+    },
+    {
+      "family": "Courier Prime",
+      "file": "courierprime-regular.ttf",
+      "weight": 500,
+      "role": "sans"
+    },
+    {
+      "family": "Courier Prime",
+      "file": "courierprime-bold.ttf",
+      "weight": 600,
+      "role": "sans"
+    },
+    {
+      "family": "Courier Prime",
+      "file": "courierprime-bold.ttf",
+      "weight": 700,
+      "role": "sans"
+    },
+    {
+      "family": "Courier Prime",
+      "file": "courierprime-regular.ttf",
+      "weight": 400,
+      "role": "mono"
+    },
+    {
+      "family": "Courier Prime",
+      "file": "courierprime-bold.ttf",
+      "weight": 700,
+      "role": "mono"
+    }
+  ],
+  "overlays": [
+    {
+      "id": "ambient",
+      "src": "overlays/ambient.html",
+      "position": "fullscreen",
+      "zIndex": 0,
+      "pointerEvents": false,
+      "layer": "behind",
+      "animation": "continuous",
+      "trigger": "continuous"
+    }
+  ]
+}

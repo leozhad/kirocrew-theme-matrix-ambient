@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14">
+  <!-- The film's block cursor: pale cyan-white, about 1.17:1, blinking ~1 s.
+       The dark-green edge keeps it visible on the light palette. -->
+  <style>
+    rect { animation: blink 1.06s steps(1, end) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { rect { animation: none; } }
+  </style>
+  <rect x="2.6" y="1.5" width="8.8" height="10.6" fill="#b2fffe" stroke="#007538" stroke-width="0.9"/>
+</svg>

@@ -1,0 +1,56 @@
+/*
+ * Matrix: phosphor console.
+ * Dark  = Neo's terminal / the operator screens (green phosphor on a black CRT).
+ * Light = the Construct (the white loading program): neutral white, green ink.
+ *
+ * Only runtime-allowlisted hooks are used (body, .chat-container,
+ * .message-bubble, .input-area, .code-block, button.primary).
+ * Fonts come from theme.json, never from here.
+ */
+
+/* Phosphor bloom: a tight core plus a soft halo, like the film's CRT text.
+ * The shadow is mixed from currentColor, so text on a filled control (black
+ * on the cursor-white button) gets a dark halo, never a green blur. */
+[data-theme="custom-leozh-matrix-ambient-dark"] body {
+  text-shadow:
+    0 0 1px color-mix(in srgb, currentColor 60%, transparent),
+    0 0 8px color-mix(in srgb, currentColor 38%, transparent);
+}
+
+/* A terminal has no rounded cards. */
+[data-theme="custom-leozh-matrix-ambient-dark"] .message-bubble,
+[data-theme="custom-leozh-matrix-ambient-light"] .message-bubble {
+  border-radius: 2px;
+}
+
+/* A monochrome CRT has no syntax colours, only brightness. The filter maps
+ * every colour the highlighter paints to the same phosphor green; contrast()
+ * spreads the brightness so tokens still differ. */
+[data-theme="custom-leozh-matrix-ambient-dark"] .code-block {
+  border: 1px solid #0b4426;
+  border-radius: 2px;
+  box-shadow: inset 0 0 18px rgba(51, 229, 154, 0.07);
+  filter: grayscale(1) sepia(1) hue-rotate(90deg) saturate(1.6) contrast(1.35) brightness(0.92);
+}
+
+[data-theme="custom-leozh-matrix-ambient-light"] .code-block {
+  border-radius: 2px;
+}
+
+/* The composer is the terminal you type into: a block caret in the film's
+ * cursor colour. Browsers without caret-shape keep a line caret, same colour. */
+[data-theme="custom-leozh-matrix-ambient-dark"] .input-area {
+  caret-color: #b2fffe;
+  caret-shape: block;
+}
+
+[data-theme="custom-leozh-matrix-ambient-light"] .input-area {
+  caret-color: #007538;
+  caret-shape: block;
+}
+
+/* Inverse video: the primary action is the cursor block itself. */
+[data-theme="custom-leozh-matrix-ambient-dark"] button.primary {
+  box-shadow: 0 0 10px rgba(178, 255, 254, 0.35);
+  border-radius: 2px;
+}

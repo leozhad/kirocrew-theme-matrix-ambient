@@ -26,11 +26,16 @@
  * a fixed grid, a drop is a wave of light passing down a column, drops in one
  * column never collide, some heads flare cool white, lit glyphs flicker. The
  * colours are the film's, scaled down in linear light by GAIN so body text
- * keeps at least 4.5:1 over the brightest glyph. Drops are slower, sparser and
- * flicker less than the screensaver's.
+ * keeps at least 4.5:1 over the brightest glyph.
+ *
+ * Motion is the film's, measured from the opening titles (see the repo README):
+ * 24 frames a second, heads jump whole cells per film frame (mostly one row,
+ * sometimes none or two) at about 9-37 rows a second, trails are mostly a few
+ * rows with a long tail, about two drops share a column, and a lit glyph
+ * changes about once a second.
  *
  * Draws only in dark mode (light mode is the Construct: plain white), never
- * under reduced motion, and never while the tab is hidden. Capped at 15 fps.
+ * under reduced motion, and never while the tab is hidden.
  * Runs inside the dashboard's sandboxed overlay iframe (no network, no storage).
  */
 (() => {
@@ -39,7 +44,8 @@
 
   // Share of the film's light that reaches the screen, in linear light.
   const GAIN = 0.03
-  const FPS = 15
+  // The film's frame rate: the rain only changes when a film frame advances.
+  const FPS = 24
   // Canvas pixels per CSS pixel. Below 1 the browser scales the canvas up, which
   // softens the glyphs (they read as background) and cuts the per-frame cost.
   const SCALE = 0.5
@@ -117,23 +123,26 @@
     timers = new Float32Array(cols * rows)
     for (let i = 0; i < grid.length; i++) {
       grid[i] = (Math.random() * RAIN.count) | 0
-      timers[i] = Math.random() * 6
+      timers[i] = Math.random() * 1.3
     }
     columns = []
     for (let c = 0; c < cols; c++) columns.push(newColumn())
   }
 
   function newColumn() {
-    // About a fifth of the screensaver's speed, with shorter trails and
-    // longer gaps, so about half as many glyphs are lit at once.
-    const period = rows * (2.2 + Math.random() * 2.6)
+    // Film: trails median ~5 rows with a tail past the screen height, short
+    // gaps (about two drops per column, ~70 % of cells lit), heads at 9-37
+    // rows/s. With ~2 heads per column, 35 % white leads keeps the film's
+    // share of white lead glyphs.
+    const trail = 2 + 32 * Math.pow(Math.random(), 1.6)
+    const period = Math.round(trail + 2 + Math.random() * 6)
     return {
-      speed: 1.6 + Math.random() * 2,
+      speed: 9 + Math.random() * 28,
       period,
-      trail: period * (0.3 + Math.random() * 0.25),
-      phase: Math.random() * period,
+      trail,
+      phase: Math.floor(Math.random() * period),
       gain: 0.7 + Math.random() * 0.3,
-      lead: Math.random() < 0.6,
+      lead: Math.random() < 0.35,
     }
   }
 
@@ -142,7 +151,8 @@
     leads.length = 0
     for (let c = 0; c < cols; c++) {
       const col = columns[c]
-      const head = now * col.speed + col.phase
+      // Whole cells: the head sits on a glyph and jumps on film frames.
+      const head = Math.floor(now * col.speed) + col.phase
       const x = c * cellW + (cellW - gw) / 2
       for (let r = 0; r < rows; r++) {
         let d = (head - r) % col.period
@@ -156,7 +166,8 @@
         if (b < 0.14) continue
         if (timers[i] <= 0) {
           grid[i] = (Math.random() * RAIN.count) | 0
-          timers[i] = 1 + Math.random() * (b > 1 ? 0.8 : 5)
+          // Film: a lit glyph changes about once a second; white leads faster.
+          timers[i] = 0.25 + Math.random() * (b > 1 ? 0.2 : 1.1)
         }
         const g = grid[i]
         const sx = (g % RAIN.cols) * RAIN.cell
@@ -219,18 +230,22 @@
     window.addEventListener('resize', layout)
 
     const FRAME = 1000 / FPS
-    let raf = 0, running = false, last = 0, clock = 0, sinceDraw = 0
+    let raf = 0, running = false, last = 0, clock = 0, acc = 0
     let benchN = 0, benchSum = 0, benchMax = 0
 
     function frame(ts) {
       if (!running) return
       const dt = Math.min(250, ts - last)
       last = ts
-      sinceDraw += dt
-      if (sinceDraw >= FRAME - 1) {
-        const step = Math.min(250, sinceDraw) / 1000
+      acc += dt
+      // Advance whole film frames and keep the remainder, so a 60 Hz screen
+      // shows them on an even 3-2-3-2 cadence (24 a second, like film on TV)
+      // and every drawn frame moves the rain by the same film time.
+      if (acc >= FRAME - 2) {
+        const n = Math.min(3, Math.max(1, Math.floor((acc + 2) / FRAME)))
+        acc = Math.min(FRAME, Math.max(0, acc - n * FRAME))
+        const step = n / FPS
         clock += step
-        sinceDraw = 0
         const t0 = bench ? performance.now() : 0
         const gw = cellW * 1.04 / RAIN.inkW
         const gh = cellH * 0.92 / RAIN.inkH
@@ -258,7 +273,7 @@
       if (want && !running) {
         running = true
         last = performance.now()
-        sinceDraw = FRAME
+        acc = FRAME
         raf = requestAnimationFrame(frame)
         canvas.classList.add('on')
       } else if (!want && running) {

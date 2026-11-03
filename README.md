@@ -42,10 +42,10 @@ To update, install the same URL again.
 
 - **Behind everything.** The rain paints under the nav, the session list, the chat header, message bubbles, code blocks and the composer, so it shows only in the open space of a page. It takes no clicks.
 - **Contrast.** The rain uses the film's colors at 3% of their light, in linear light. Over the brightest glyph, body text (`--text`) keeps 7.9:1 and bright text (`--text-strong`) 10.4:1. Muted text (`--muted`) drops to 3.8:1 where it sits over the rain.
-- **Motion.** Drops fall at about a fifth of the screensaver's speed, with trails about half as long. The glyph shapes and grid are the screensaver's, and the hues stay within 5° of it.
+- **Motion.** It moves like the film's opening titles, measured at the film's 24 frames per second. Drop heads jump whole cells on each film frame: mostly one row, sometimes none or two. They fall at 9–37 rows a second (median about 22), about one screen height a second. Most trails are a few rows long and some run past the screen height. About two drops share a column, about 70% of cells are lit, and a lit glyph changes about once a second. The glyph shapes and grid are the screensaver's, and the hues stay within 5° of it.
 - **Light mode** stays plain white. In the film the Construct is empty white space, and the rain only appears on the black operator screens. On white, the rain would have to be dark ink, which is a different effect.
 - **Reduced motion.** When the OS asks for reduced motion, Kiro Crew does not load the rain, and the page shows a plain black background.
-- **CPU.** At most 15 frames per second, drawn at half resolution, paused while the tab is hidden and in light mode. In headless Chromium with software rendering, a frame takes about 4 ms, about 10% of one core.
+- **CPU.** 24 frames per second, drawn at half resolution, paused while the tab is hidden and in light mode. In headless Chromium with software rendering, a frame takes about 5–6 ms, and the rain uses about 20–22% of one core.
 
 The rain follows the film's rules as documented by [Rezmason/matrix](https://github.com/Rezmason/matrix): glyphs sit in a fixed grid and never move, a drop is a wave of light passing down a column, drops in one column never collide, some heads flare white, and glyphs flicker.
 

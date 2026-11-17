@@ -4,6 +4,10 @@
   "emoji": "💊",
   "level": 2,
   "formatVersion": 1,
+  "codeTheme": {
+    "dark": "github-dark-default",
+    "light": "light-plus"
+  },
   "fonts": [
     {
       "family": "Courier Prime",

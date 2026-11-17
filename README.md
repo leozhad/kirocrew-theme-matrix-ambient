@@ -36,12 +36,22 @@ Needs Kiro Crew 0.11.1 or newer. That release added the `"layer": "behind"` over
 
 Courier Prime feeds both the Sans and Mono font roles. To keep your OS font, pick System under Settings → Display → Font Family.
 
+To stop the rain but keep the colors, turn off Settings → Display → Theme → Experience → Overlays (Kiro Crew 0.12.0 or newer).
+
 To update, install the same URL again.
+
+### From a .zip file
+
+On Kiro Crew 0.12.0 or newer you can also install from a `.zip`, for example from a phone or another browser that is not on the gateway's machine:
+
+1. On this page, choose **Code → Download ZIP**.
+2. Open Settings → Display → Theme.
+3. Under **Install Theme**, set **Theme source** to **Zip file**, choose the downloaded `.zip` and install.
 
 ## How the rain behaves
 
 - **Behind everything.** The rain paints under the nav, the session list, the chat header, message bubbles, code blocks and the composer, so it shows only in the open space of a page. It takes no clicks.
-- **Contrast.** The rain uses the film's colors at 3% of their light, in linear light. Over the brightest glyph, body text (`--text`) keeps 7.9:1 and bright text (`--text-strong`) 10.4:1. Muted text (`--muted`) drops to 3.8:1 where it sits over the rain.
+- **Contrast.** The rain uses the film's colors at 3% of their light, in linear light. Over the brightest glyph, body text (`--text`) keeps 7.9:1, bright text (`--text-strong`) 10.4:1 and muted text (`--muted`) 4.55:1.
 - **Motion.** It moves like the film's opening titles, measured at the film's 24 frames per second. Drop heads jump whole cells on each film frame: mostly one row, sometimes none or two. They fall at 9–37 rows a second (median about 22), about one screen height a second. Most trails are a few rows long and some run past the screen height. About two drops share a column, about 70% of cells are lit, and a lit glyph changes about once a second. The glyph shapes and grid are the screensaver's, and the hues stay within 5° of it.
 - **Light mode** stays plain white. In the film the Construct is empty white space, and the rain only appears on the black operator screens. On white, the rain would have to be dark ink, which is a different effect.
 - **Reduced motion.** When the OS asks for reduced motion, Kiro Crew does not load the rain, and the page shows a plain black background.
@@ -49,10 +59,14 @@ To update, install the same URL again.
 
 The rain follows the film's rules as documented by [Rezmason/matrix](https://github.com/Rezmason/matrix): glyphs sit in a fixed grid and never move, a drop is a wave of light passing down a column, drops in one column never collide, some heads flare white, and glyphs flicker.
 
+## Code views
+
+In dark mode, fenced code blocks are shown in one green, like a monochrome CRT. Diffs and file views have no theme hook, so on Kiro Crew 0.13.0 or newer the pack picks their syntax colors: `github-dark-default` in dark mode (comments, keywords, strings, functions, numbers and types all at 6.8:1 or more over black) and `light-plus` in light mode (green comments; the same token kinds all at 4.5:1 or more over white). Older versions ignore the setting and keep the stock scheme.
+
 ## What a pack cannot change
 
 - **Fixed colors.** The Settings section icon tiles and the glass search bar keep fixed colors.
-- **Reduced motion.** The thinking cursor still blinks when the OS asks for reduced motion, because browsers do not pass that setting to SVG images.
+- **Reduced motion.** On Kiro Crew 0.12.0 or newer the thinking cursor holds still when the OS asks for reduced motion. Older versions keep it blinking, because browsers do not pass that setting to SVG images.
 
 ## Credits and licenses
 

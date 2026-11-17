@@ -7,8 +7,8 @@ This is the [Matrix pack](https://github.com/leozhad/kirocrew-theme-matrix) with
 | Repo | What it is |
 |---|---|
 | [kirocrew-theme-matrix](https://github.com/leozhad/kirocrew-theme-matrix) | The full pack (Level 2): colors, fonts, cursor, and the idle screensaver |
-| [kirocrew-theme-matrix-quiet](https://github.com/leozhad/kirocrew-theme-matrix-quiet) | The same pack without the screensaver (Level 1) |
 | This one | The same pack with rain behind the chat and no screensaver (Level 2) |
+| [kirocrew-theme-matrix-quiet](https://github.com/leozhad/kirocrew-theme-matrix-quiet) | Retired on Nov 17, 2026 and archived. For the same look, use either pack with Settings → Display → Theme → Experience → Overlays turned off |
 
 | Part | What it does |
 |---|---|

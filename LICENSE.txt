@@ -7,7 +7,7 @@ branding/splash.svg.
 
 -------------------------------------------------------------------------------
 1. Pack code and artwork (theme.json, variables.json, styles/overrides.css,
-   overlays/ambient.html script, loader/, branding/)
+   overlays/ambient.html script, loader/, branding/, audio/)
 -------------------------------------------------------------------------------
 
 MIT License

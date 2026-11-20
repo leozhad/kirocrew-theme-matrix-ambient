@@ -55,7 +55,8 @@
     "--shadow-md": "0 0 12px rgba(51, 229, 154, 0.12)",
     "--shadow-lg": "0 0 28px rgba(51, 229, 154, 0.16)",
     "--term-cyan": "#1affac",
-    "--term-magenta": "#d78cff"
+    "--term-magenta": "#d78cff",
+    "--term-selection": "rgba(51, 229, 154, 0.30)"
   },
   "light": {
     "--bg": "#ffffff",
@@ -102,6 +103,7 @@
     "--shadow-md": "0 4px 12px rgba(2, 26, 12, 0.10)",
     "--shadow-lg": "0 12px 32px rgba(2, 26, 12, 0.14)",
     "--term-cyan": "#007a6a",
-    "--term-magenta": "#8a3fb8"
+    "--term-magenta": "#8a3fb8",
+    "--term-selection": "rgba(0, 117, 56, 0.18)"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "triggers": {
+    "activate": {
+      "src": "audio/jack-in.wav",
+      "volume": 0.5
+    },
+    "deactivate": {
+      "src": "audio/unplug.wav",
+      "volume": 0.45
+    },
+    "notification": {
+      "src": "audio/rain.wav",
+      "volume": 0.5
+    },
+    "category:approval": {
+      "src": "audio/phone.wav",
+      "volume": 0.4
+    }
+  }
+}

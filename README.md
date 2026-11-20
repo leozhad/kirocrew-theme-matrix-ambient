@@ -6,8 +6,8 @@ This is the [Matrix pack](https://github.com/leozhad/kirocrew-theme-matrix) with
 
 | Repo | What it is |
 |---|---|
-| [kirocrew-theme-matrix](https://github.com/leozhad/kirocrew-theme-matrix) | The full pack (Level 2): colors, fonts, cursor, and the idle screensaver |
-| This one | The same pack with rain behind the chat and no screensaver (Level 2) |
+| [kirocrew-theme-matrix](https://github.com/leozhad/kirocrew-theme-matrix) | The full pack (Level 2): colors, fonts, cursor, the idle screensaver and the desktop splash |
+| This one | The same pack with rain behind the chat and no screensaver, plus the desktop splash (Level 2) |
 | [kirocrew-theme-matrix-quiet](https://github.com/leozhad/kirocrew-theme-matrix-quiet) | Retired on Nov 17, 2026 and archived. For the same look, use either pack with Settings → Display → Theme → Experience → Overlays turned off |
 
 | Part | What it does |
@@ -15,6 +15,7 @@ This is the [Matrix pack](https://github.com/leozhad/kirocrew-theme-matrix) with
 | Dark mode | Neo's terminal: black CRT, green phosphor text with glow, Courier type, the film's block cursor color, code blocks in one green, and dim rain behind it all |
 | Light mode | The Construct (the white loading program): neutral white with green ink, no rain |
 | Thinking indicator | A blinking block cursor |
+| Desktop splash | While the desktop app starts its gateway: the digital rain with "Wake up, Neo..." and the blinking block cursor |
 
 ## Screenshots
 
@@ -26,9 +27,13 @@ This is the [Matrix pack](https://github.com/leozhad/kirocrew-theme-matrix) with
 |---|
 | ![Light mode: green text on white, no rain](.github/screenshots/light.png) |
 
+| Desktop splash (dark mode) |
+|---|
+| ![The desktop app's boot screen: a black screen with digital rain and "Wake up, Neo..." on the pale cyan accent, "Starting gateway…" below](.github/screenshots/splash.jpg) |
+
 ## Install
 
-Needs Kiro Crew 0.11.1 or newer. That release added the `"layer": "behind"` overlay option. Older versions ignore it and draw the rain over the chat.
+Needs Kiro Crew 0.13.0 or newer.
 
 1. Open Settings → Display → Theme.
 2. Under **Install Theme**, choose **GitHub** and paste `https://github.com/leozhad/kirocrew-theme-matrix-ambient`.
@@ -36,13 +41,13 @@ Needs Kiro Crew 0.11.1 or newer. That release added the `"layer": "behind"` over
 
 Courier Prime feeds both the Sans and Mono font roles. To keep your OS font, pick System under Settings → Display → Font Family.
 
-To stop the rain but keep the colors, turn off Settings → Display → Theme → Experience → Overlays (Kiro Crew 0.12.0 or newer).
+To stop the rain but keep the colors, turn off Settings → Display → Theme → Experience → Overlays.
 
 To update, install the same URL again.
 
 ### From a .zip file
 
-On Kiro Crew 0.12.0 or newer you can also install from a `.zip`, for example from a phone or another browser that is not on the gateway's machine:
+You can also install from a `.zip`, for example from a phone or another browser that is not on the gateway's machine:
 
 1. On this page, choose **Code → Download ZIP**.
 2. Open Settings → Display → Theme.
@@ -59,14 +64,22 @@ On Kiro Crew 0.12.0 or newer you can also install from a `.zip`, for example fro
 
 The rain follows the film's rules as documented by [Rezmason/matrix](https://github.com/Rezmason/matrix): glyphs sit in a fixed grid and never move, a drop is a wave of light passing down a column, drops in one column never collide, some heads flare white, and glyphs flicker.
 
+## Desktop splash
+
+While the Kiro Crew desktop app starts its gateway, it shows the pack's `branding/splash.svg`: Neo's screen, black with the digital rain, "Wake up, Neo..." in Courier Prime Bold and the film's block cursor, blinking.
+
+- **Where.** Only the desktop app shows it, on its own backdrop, which follows the theme accent: pale cyan-white in dark mode, green in light mode.
+- **When.** The app keeps the art the dashboard last reported, so it shows from the next launch after you pick the theme.
+- **Motion.** Glyphs sit in a fixed grid, drops are light passing down a column, and heads jump whole cells at 24 frames a second. Under reduced motion it holds one still frame.
+
 ## Code views
 
-In dark mode, fenced code blocks are shown in one green, like a monochrome CRT. Diffs and file views have no theme hook, so on Kiro Crew 0.13.0 or newer the pack picks their syntax colors: `github-dark-default` in dark mode (comments, keywords, strings, functions, numbers and types all at 6.8:1 or more over black) and `light-plus` in light mode (green comments; the same token kinds all at 4.5:1 or more over white). Older versions ignore the setting and keep the stock scheme.
+In dark mode, fenced code blocks are shown in one green, like a monochrome CRT. Diffs and file views have no theme hook, so the pack picks their syntax colors: `github-dark-default` in dark mode (comments, keywords, strings, functions, numbers and types all at 6.8:1 or more over black) and `light-plus` in light mode (green comments; the same token kinds all at 4.5:1 or more over white).
 
 ## What a pack cannot change
 
 - **Fixed colors.** The Settings section icon tiles and the glass search bar keep fixed colors.
-- **Reduced motion.** On Kiro Crew 0.12.0 or newer the thinking cursor holds still when the OS asks for reduced motion. Older versions keep it blinking, because browsers do not pass that setting to SVG images.
+- **Reduced motion.** The thinking cursor holds still when the OS asks for reduced motion.
 
 ## Credits and licenses
 

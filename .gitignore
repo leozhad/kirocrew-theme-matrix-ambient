@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 node_modules/
 .DS_Store
+# Film audio stays out of this public repo: keep clips in a local-audio/
+# or audio-film/ folder outside git (see README, "Use your own sounds").
+local-audio/
+audio-film/

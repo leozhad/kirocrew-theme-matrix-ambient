@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+  <!-- The red pill and the blue pill, as Morpheus holds them out: red on his
+       right hand (the viewer's left), blue on his left. Glossy gel capsules,
+       drawn from scratch. Static, so reduced motion changes nothing. -->
+  <defs>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff6a5e"/>
+      <stop offset="0.45" stop-color="#c8141c"/>
+      <stop offset="1" stop-color="#5e060a"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7aa6ff"/>
+      <stop offset="0.45" stop-color="#1a4fd6"/>
+      <stop offset="1" stop-color="#0a1f66"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(24 52) rotate(-30)">
+    <rect x="-20" y="-9.5" width="40" height="19" rx="9.5" fill="url(#red)" stroke="#ff8f86" stroke-opacity="0.6" stroke-width="1.2"/>
+    <rect x="-14.5" y="-7.2" width="27" height="6" rx="3" fill="url(#gloss)"/>
+  </g>
+  <g transform="translate(72 52) rotate(30)">
+    <rect x="-20" y="-9.5" width="40" height="19" rx="9.5" fill="url(#blue)" stroke="#9cbcff" stroke-opacity="0.6" stroke-width="1.2"/>
+    <rect x="-12.5" y="-7.2" width="27" height="6" rx="3" fill="url(#gloss)"/>
+  </g>
+</svg>

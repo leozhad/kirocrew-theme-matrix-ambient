@@ -2,8 +2,8 @@ Matrix theme pack for Kiro Crew
 ===============================
 
 This file covers three things: the pack's own code and artwork, the Courier
-Prime font it ships, and the glyph art embedded in overlays/ambient.html and
-branding/splash.svg.
+Prime font it ships, and the glyph art embedded in overlays/ambient.html,
+branding/splash.svg and styles/overrides.css.
 
 -------------------------------------------------------------------------------
 1. Pack code and artwork (theme.json, variables.json, styles/overrides.css,
@@ -33,7 +33,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 -------------------------------------------------------------------------------
-2. Rain glyphs embedded in overlays/ambient.html and branding/splash.svg
+2. Rain glyphs embedded in overlays/ambient.html, branding/splash.svg and
+   styles/overrides.css
 -------------------------------------------------------------------------------
 
 Rendered from Matrix-Code.ttf in https://github.com/Rezmason/matrix
